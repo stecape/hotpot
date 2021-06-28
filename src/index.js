@@ -10,9 +10,10 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <CssBaseline />
-      <App />
+      <App/>
 	  </BrowserRouter>
   </React.StrictMode>,
+  
   document.getElementById('root')
 );
 

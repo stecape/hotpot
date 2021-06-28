@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom'
 import Home from './pages/Home'
-//import Advanced from './pages/Advanced'
+import Advanced from './pages/Advanced'
 import Drawer from '@material-ui/core/Drawer'
 import List from '@material-ui/core/List'
 import Paper from '@material-ui/core/Paper'
@@ -55,7 +55,6 @@ export default function App() {
 
   const [drawer, setDrawer] = useState(false)
   const classes = useStyles()
-
   return (
     <ThemeProvider theme={theme}>
       <AppBar position="static">
@@ -83,6 +82,7 @@ export default function App() {
           <Switch>
             <Redirect from='/index.html' to='/'/>
             <Route exact path="/" component={Home}/>
+            <Route exact path="/Advanced" component={Advanced}/>
           </Switch>
         </div>
       </Paper>

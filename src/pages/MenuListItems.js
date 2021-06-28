@@ -7,8 +7,8 @@ import ListItemText from '@material-ui/core/ListItemText'
 import HomeIcon from '@material-ui/icons/Home'
 import CachedIcon from '@material-ui/icons/Cached'
 
-var isSelected = (path) => {
-    const match = !!matchPath(this.props.location.pathname, {
+const isSelected = (pathName, path) => {
+    const match = !!matchPath(pathName, {
       path: path,
       exact: true,
       strict: false
@@ -16,16 +16,16 @@ var isSelected = (path) => {
     return match
 }
 
-function MenuListItems () {
+function MenuListItems (props) {
     return(
       <div>
-        <MenuItem button divider component={Link} to="/" selected={()=>isSelected("/")} >
+        <MenuItem button divider component={Link} to="/" selected={isSelected(props.location.pathname, "/")} >
           <ListItemIcon>
             <HomeIcon />
           </ListItemIcon>
           <ListItemText primary="Home" />
         </MenuItem>
-        <MenuItem button component={Link} to="/Advanced" selected={()=>isSelected("/Advanced")}>
+        <MenuItem button component={Link} to="/Advanced" selected={isSelected(props.location.pathname, "/Advanced")}>
           <ListItemIcon>
             <CachedIcon />
           </ListItemIcon>
