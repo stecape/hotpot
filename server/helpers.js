@@ -8,5 +8,4 @@ function getIdParam(req) {
 	}
 	throw new TypeError(`Invalid ':id' param: "${id}"`)
 }
-
 module.exports = { getIdParam }

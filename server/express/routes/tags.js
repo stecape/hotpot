@@ -1,5 +1,5 @@
 const { models } = require('../../sequelize')
-const { getIdParam } = require('../helpers')
+const { getIdParam } = require('../../helpers')
 
 async function getAll(req, res) {
 	const tags = await models.tags.findAll()

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom'
 import Home from './pages/Home'
@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import { ThemeProvider, createMuiTheme, makeStyles} from '@material-ui/core/styles'
+import socketIOClient from "socket.io-client"
 
 const theme = createMuiTheme({
   palette: {
@@ -55,6 +56,20 @@ export default function App() {
 
   const [drawer, setDrawer] = useState(false)
   const classes = useStyles()
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    console.log('Client connected') 
+    const socket = socketIOClient('http://localhost:3100');
+    socket.on("TAGS", data => {
+      console.log(data) 
+    })   
+    return () => {
+      socket.disconnect()
+      console.log("Client disconnected")
+    }
+  })
+  
   return (
     <ThemeProvider theme={theme}>
       <AppBar position="static">
